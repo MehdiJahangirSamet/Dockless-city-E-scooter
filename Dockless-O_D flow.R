@@ -25,7 +25,7 @@ Zones<- st_read ("ShapefileDir","Dockless_Vehicle_Distribution_Zones" )
 class(Zones)
 
 # tell R that End and startpoints coordinates are in the same lat/lon reference system
-# as the parks data -- BUT ONLY BECAUSE WE KNOW THIS IS THE CASE!
+
 #Zones <- spTransform(Zones, CRS("+proj=longlat +datum=WGS84"))
 #proj4string(Zones)
 names(Zones)
@@ -81,9 +81,8 @@ str(zones_joined)
 sum(zones_joined$TripNo)
 #> [1] 238805
 names(zones_joined)
-#> [1] "geo_code"   "name"       "all"        "bicycle"    "foot"      
-#> [6] "car_driver" "train"      "geometry"
-
+#>[1] "Dist_Zone"      "Pl2040Area"     "EndZones"       "TripDuration_O"
+#>[5] "TripDistance_O" "TripNo_O"       "geometry"      
 #Destination summary zones
 zones_od = Primary_OD_D %>% 
   group_by(EndZones) %>% 
@@ -150,6 +149,9 @@ tm_shape(Abs_zones_od) + tm_borders() +
 #sum(desire_line2$TripNo_O)
 
 #sum(desire_lines$TripNo_O)
+
+#######################################################################
+########################################################################
 
 #other plots
 library(tidyverse)
