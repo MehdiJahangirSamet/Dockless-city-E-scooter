@@ -24,7 +24,6 @@ class(Zones)
 
 
 # tell R that End and startpoints coordinates are in the same lat/lon reference system
-# as the parks data -- BUT ONLY BECAUSE WE KNOW THIS IS THE CASE!
 Zones <- spTransform(Zones, CRS("+proj=longlat +datum=WGS84"))
 proj4string(Zones)
 
