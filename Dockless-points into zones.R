@@ -43,9 +43,9 @@ inside.StartZone
 mean(inside.StartZone)
 ## [1] 0.990208
 
-# use 'over' again, this time with parks as a SpatialPolygonsDataFrame
-# object, to determine which park (if any) contains each sighting, and
-# store the park name as an attribute of the bears data
+# use 'over' again, this time with zones as a SpatialPolygonsDataFrame
+# object, to determine which zone (if any) contains each sighting, and
+# store the zone name as an attribute of the bears data
 Startpoints$StartZones <- over(Startpoints, Zones)$Dist_Zone
 # the same for EndZones
 Endpoints$EndZones <- over(Endpoints, Zones)$Dist_Zone
@@ -54,7 +54,7 @@ Endpoints$EndZones <- over(Endpoints, Zones)$Dist_Zone
 Startpoints$EndZones <- Endpoints$EndZones
 
 # draw a map big enough to encompass all points (but don't actually plot
-# the points yet), then add in park boundaries superimposed upon a map
+# the points yet), then add in zone boundaries superimposed upon a map
 # of the United States
 plot(coordinates(Startpoints), type="n")
 map("world", region="usa", add=TRUE)
@@ -63,10 +63,10 @@ legend("topright", cex=0.85,
        c("Startpoints in Zones", "Startpoints not in Zone", "Zones boundary"),
        pch=c(16, 1, NA), lty=c(NA, NA, 1),
        col=c("red", "grey", "green"), bty="n")
-title(expression(paste(italic("Ursus arctos"),
-                       " sightings with respect to national parks")))
+title(expression(paste(italic("O-D"),
+                       "E-scooter Dockless project")))
 
-# now plot bear points with separate colors inside and outside of parks
+# now plot bear points with separate colors inside and outside of zones
 points(Startpoints[!inside.StartZone, ], pch=1, col="gray")
 points(Startpoints[inside.StartZone, ], pch=16, col="red")
 
