@@ -24,7 +24,8 @@ str(dataset1$StartDateTime)
 #check for missing value
 sum(is.na(dataset1))
 #[1] 7435 which is the number of points (origines or destinations) outside zones
-
+#Omit Null value
+dataset1=na.omit(dataset1)
 #selecting the weekdays
 #datesetweekdays=filter(dataset1,DayOfWeek!=7)
 
